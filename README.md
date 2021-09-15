@@ -8,4 +8,4 @@ This Bash script is designed to be executed by a task scheduler such as [cron](h
 
 A detailed walk-though is available [here](https://kurtcms.org/web-monitoring-monitor-web-page-for-changes/).
 
-![alt text](https://kurtcms.org/git/web-monitor/web-monitor-screenshot.png)
+<img src="https://kurtcms.org/git/web-monitor/web-monitor-screenshot.png" width="550">

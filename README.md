@@ -1,6 +1,6 @@
 # Web Monitoring: Monitor Web Page for Changes
 
-This Python app is containerised with [Docker Compose](https://docs.docker.com/compose/) for rapid and modular deployment that fits in any microservice architecture.
+This Python app is containerised with [Docker Compose](https://docs.docker.com/compose/) for a modular and cloud native deployment that fits in any microservice architecture.
 
 It does the following:
 
@@ -50,7 +50,7 @@ If email notification is required, the app expects the SMTPS port number, SMTP s
 Create the `.env` file.
 
 ```shell
-$ nano /app/.env
+$ nano /app/web-monitor/.env
 ```
 
 And define the variables accordingly.
@@ -65,18 +65,18 @@ EMAIL_SENDER_PASSWORD = '(redacted)'
 
 ### Crontab
 
-By default the app is scheduled with [cron](https://crontab.guru/) to pull a copy of the web page and check for changes every 15 minutes, with `stdout` and `stderr` redirected to the main process for `Docker logs`.  
+By default the app is scheduled with [cron](https://linux.die.net/man/8/cron) to pull a copy of the web page and check for changes every 15 minutes, with `stdout` and `stderr` redirected to the main process for `Docker logs`.  
 
 Modify the `crontab` to feed in the URL of interest, and signify to the Python script whether email notification is needed. Change to a different schedule if required.
 
 ```shell
-$ nano /app/crontab
+$ nano /app/web-monitor/crontab
 ```
 
 And define the variables accordingly.
 
 ```
-*/15 * * * * /usr/bin/python3 /app/web-monitor.py -u https://lookingglass.pccwglobal.com/ > /proc/1/fd/1 2>/proc/1/fd/2
+*/15 * * * * /usr/bin/python3 /app/web-monitor/web-monitor.py -u https://lookingglass.pccwglobal.com/ > /proc/1/fd/1 2>/proc/1/fd/2
 #
 # Usage: web-monitor.py [-e] -u <url>
 #
@@ -91,12 +91,14 @@ And define the variables accordingly.
 
 ### Docker Container
 
+Packaged as a container, the app is a standalone, executable package that may be run on Docker Engine. Be sure to have [Docker](https://docs.docker.com/engine/install/) installed.
+
 #### Docker Compose
 
-With Docker Compose, the container may be provisioned with a single command. Be sure to have Docker Compose [installed](https://docs.docker.com/compose/install/).
+With Docker Compose, the app may be provisioned with a single command. Be sure to have [Docker Compose](https://docs.docker.com/compose/install/) installed.
 
 ```shell
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 Stopping the container is as simple as a single command.
@@ -110,7 +112,7 @@ $ docker-compose down
 Otherwise the Docker image can also be built manually.
 
 ```shell
-$ docker build -t web-monitor /app/
+$ docker build -t web-monitor /app/web-monitor/
 ```
 
 Run the image with Docker once it is ready.  
@@ -121,9 +123,11 @@ $ docker run -it --rm --name web-monitor web-monitor
 
 ### Standalone Python Script
 
+Alternatively the `web-monitor.py` script may be deployed as a standalone service.
+
 #### Dependencies
 
-Alternatively the `web-monitor.py` script may be deployed as a standalone service. In which case be sure to install the following required libraries:
+In which case be sure to install the following required libraries:
 
 1. [Requests](https://github.com/psf/requests)
 2. [Python-dotenv](https://github.com/theskumar/python-dotenv)
@@ -150,10 +154,10 @@ Option:
 
 #### Cron
 
-It may then be executed with a task scheduler such as [cron](https://crontab.guru/) that runs it once every 15 minutes for example.
+It may then be executed with a task scheduler such as [cron](https://linux.die.net/man/8/cron) that runs it once every 15 minutes for example.
 
 ```shell
-$ (crontab -l; echo "*/15 * * * * /usr/bin/python3 /app/web-monitor.py -u https://lookingglass.pccwglobal.com/") | crontab -
+$ (crontab -l; echo "*/15 * * * * /usr/bin/python3 /app/web-monitor/web-monitor.py -u https://lookingglass.pccwglobal.com/") | crontab -
 ```
 
 ## Checksum and the Downloaded Web Page

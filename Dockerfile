@@ -11,6 +11,6 @@ COPY requirements.txt requirements.txt
 COPY web-monitor.py *.env .
 COPY crontab /etc/cron.d/crontab
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
 RUN chmod 0644 /etc/cron.d/crontab
 RUN /usr/bin/crontab /etc/cron.d/crontab

@@ -8,7 +8,7 @@ It does the following:
 2. Use the [hashlib](https://docs.python.org/3/library/hashlib.html) module to compute a SHA 256-bit checksum with the downloaded web page; and
 3. Compare the checksum with a previous build, if one exists, and on mismatch save the checksum and a copy of the downloaded web page, before using the [smtplib](https://docs.python.org/3/library/smtplib.html) module to send a notification email to the predefined recipient if it is required. Otherwise if no previous checksum exists, save the checksum the downloaded web page for future matching and references.
 
-A detailed walk-though is available [here](https://kurtcms.org/web-monitoring-monitor-web-page-for-changes/).
+A detailed walk-through is available [here](https://kurtcms.org/web-monitoring-monitor-web-page-for-changes/).
 
 <img src="https://kurtcms.org/git/web-monitor/web-monitor-screenshot.png" width="550">
 

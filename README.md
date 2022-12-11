@@ -10,8 +10,6 @@ It does the following:
 
 A detailed walk-through is available [here](https://kurtcms.org/web-monitoring-monitor-web-page-for-changes/).
 
-<img src="https://github.com/kurtcms/web-monitor/blob/master/screenshot.png" width="550">
-
 ## Table of Content
 
 - [Getting Started](#getting-started)

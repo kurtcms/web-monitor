@@ -58,7 +58,7 @@ And define the variables accordingly.
 EMAIL_SSL_PORT = 465
 EMAIL_SMTP_SERVER = 'smtp.kurtcms.org'
 EMAIL_SENDER = 'alert@kurtcms.org'
-EMAIL_RECEIVER = 'noc@kurtcms.or'
+EMAIL_RECEIVER = 'noc@kurtcms.org'
 EMAIL_SENDER_PASSWORD = '(redacted)'
 ```
 

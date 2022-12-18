@@ -64,7 +64,7 @@ EMAIL_SENDER_PASSWORD = '(redacted)'
 
 ### Crontab
 
-By default the app is scheduled with [cron](https://linux.die.net/man/8/cron) to pull a copy of the web page and check for changes every 15 minutes, with `stdout` and `stderr` redirected to the main process for `Docker logs`.  
+By default the app is scheduled with [cron](https://linux.die.net/man/8/cron) to pull a copy of the web page and check for changes every 15 minutes, with `stdout` and `stderr` redirected to the main process for `Docker logs`.
 
 Modify the `crontab` to feed in the URL of interest, and signify to the Python script whether email notification is needed. Change to a different schedule if required.
 
